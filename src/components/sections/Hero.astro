@@ -6,63 +6,6 @@ import Button from '../ui/Button.astro';
   <!-- Фон — чистый белый -->
   <div class="absolute inset-0 bg-white"></div>
 
-  <!-- Солнечная система — реалистичная, на всю высоту, с анимацией вращения -->
-  <div class="absolute inset-0 pointer-events-none flex items-center justify-center md:justify-end md:pr-[12%] lg:pr-[14%]" aria-hidden="true">
-    <div class="solar-system relative" style="width: 85vh; height: 85vh;">
-      <!-- Солнце — центральное свечение с пульсацией -->
-      <div class="sun-glow absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[10%] h-[10%] rounded-full" style="background: radial-gradient(circle, rgba(192,132,252,0.2) 0%, rgba(192,132,252,0.06) 50%, transparent 75%);"></div>
-      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[4.5%] h-[4.5%] rounded-full" style="background: radial-gradient(circle, rgba(192,132,252,0.35) 0%, rgba(176,125,151,0.15) 60%, transparent 100%);"></div>
-
-      <!-- Лучи солнца (тонкие линии) -->
-      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[12%] h-[0.5px] bg-gradient-to-r from-transparent via-lavender-300/20 to-transparent"></div>
-      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[12%] w-[0.5px] bg-gradient-to-b from-transparent via-lavender-300/20 to-transparent"></div>
-      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[10%] h-[0.5px] bg-gradient-to-r from-transparent via-lavender-300/15 to-transparent rotate-45"></div>
-      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[10%] h-[0.5px] bg-gradient-to-r from-transparent via-lavender-300/15 to-transparent -rotate-45"></div>
-
-      <!-- Орбита 1 — Меркурий (самая быстрая) -->
-      <div class="orbit orbit-1 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[28%] h-[28%] rounded-full border border-lavender-300/[0.12]">
-        <div class="planet absolute -top-[5px] left-1/2 -translate-x-1/2">
-          <div class="w-[10px] h-[10px] rounded-full" style="background: radial-gradient(circle at 35% 35%, rgba(216,180,254,0.6), rgba(192,132,252,0.25));"></div>
-        </div>
-      </div>
-
-      <!-- Орбита 2 — Венера -->
-      <div class="orbit orbit-2 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[44%] h-[44%] rounded-full border border-lavender-300/[0.10]">
-        <div class="planet absolute -top-[7px] left-1/2 -translate-x-1/2">
-          <div class="w-[14px] h-[14px] rounded-full" style="background: radial-gradient(circle at 35% 35%, rgba(201,160,181,0.55), rgba(176,125,151,0.2));"></div>
-        </div>
-      </div>
-
-      <!-- Орбита 3 — Земля + Луна -->
-      <div class="orbit orbit-3 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[62%] h-[62%] rounded-full border border-lavender-300/[0.08]">
-        <div class="planet absolute -top-[9px] left-1/2 -translate-x-1/2">
-          <!-- Земля -->
-          <div class="relative">
-            <div class="w-[18px] h-[18px] rounded-full" style="background: radial-gradient(circle at 35% 35%, rgba(192,132,252,0.5), rgba(168,85,247,0.15));"></div>
-            <!-- Луна — вращается вокруг Земли -->
-            <div class="moon-orbit absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[34px] h-[34px]">
-              <div class="absolute -top-[3px] left-1/2 -translate-x-1/2 w-[6px] h-[6px] rounded-full" style="background: radial-gradient(circle at 40% 40%, rgba(216,180,254,0.5), rgba(192,132,252,0.15));"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Орбита 4 — Марс (самая медленная) -->
-      <div class="orbit orbit-4 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[82%] h-[82%] rounded-full border border-lavender-300/[0.06]">
-        <div class="planet absolute -top-[6px] left-1/2 -translate-x-1/2">
-          <div class="w-[12px] h-[12px] rounded-full" style="background: radial-gradient(circle at 35% 35%, rgba(176,125,151,0.45), rgba(157,97,125,0.12));"></div>
-        </div>
-      </div>
-
-      <!-- Орбита 5 — далёкая, еле видная (Юпитер) -->
-      <div class="orbit orbit-5 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[98%] h-[98%] rounded-full border border-lavender-200/[0.04]">
-        <div class="planet absolute -top-[4px] left-1/2 -translate-x-1/2">
-          <div class="w-[8px] h-[8px] rounded-full" style="background: radial-gradient(circle at 35% 35%, rgba(216,180,254,0.3), rgba(192,132,252,0.08));"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <!-- Контент: два столбца -->
   <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-28 pb-16 md:pt-32 md:pb-20">
     <div class="grid md:grid-cols-2 gap-10 lg:gap-16 items-center">
@@ -86,11 +29,68 @@ import Button from '../ui/Button.astro';
         </div>
       </div>
 
-      <!-- Фото справа -->
+      <!-- Фото справа + Солнечная система на фоне -->
       <div class="order-1 md:order-2 flex justify-center hero-photo-wrapper">
         <div class="relative w-[280px] sm:w-[340px] lg:w-[400px]">
+
+          <!-- Солнечная система — центр = центр фото, размер = 90vh -->
+          <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none solar-system" style="width: 85vh; height: 85vh;" aria-hidden="true">
+
+            <!-- Солнце — центральное свечение с пульсацией -->
+            <div class="sun-glow absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[10%] h-[10%] rounded-full" style="background: radial-gradient(circle, rgba(192,132,252,0.2) 0%, rgba(192,132,252,0.06) 50%, transparent 75%);"></div>
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[4.5%] h-[4.5%] rounded-full" style="background: radial-gradient(circle, rgba(192,132,252,0.35) 0%, rgba(176,125,151,0.15) 60%, transparent 100%);"></div>
+
+            <!-- Лучи солнца -->
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[14%] h-[1px] bg-gradient-to-r from-transparent via-lavender-300/15 to-transparent"></div>
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[14%] w-[1px] bg-gradient-to-b from-transparent via-lavender-300/15 to-transparent"></div>
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[11%] h-[1px] bg-gradient-to-r from-transparent via-lavender-300/10 to-transparent rotate-45"></div>
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[11%] h-[1px] bg-gradient-to-r from-transparent via-lavender-300/10 to-transparent -rotate-45"></div>
+
+            <!-- Орбита 1 — Меркурий -->
+            <div class="orbit orbit-1 absolute top-1/2 left-1/2 w-[28%] h-[28%] rounded-full" style="border: 2.5px solid rgba(216,180,254,0.25);">
+              <div class="planet absolute -top-[8px] left-1/2 -translate-x-1/2">
+                <div class="w-[16px] h-[16px] rounded-full" style="background: radial-gradient(circle at 30% 30%, rgba(216,180,254,0.8), rgba(192,132,252,0.4)); box-shadow: 0 0 10px rgba(192,132,252,0.3);"></div>
+              </div>
+            </div>
+
+            <!-- Орбита 2 — Венера -->
+            <div class="orbit orbit-2 absolute top-1/2 left-1/2 w-[44%] h-[44%] rounded-full" style="border: 2.5px solid rgba(216,180,254,0.2);">
+              <div class="planet absolute -top-[10px] left-1/2 -translate-x-1/2">
+                <div class="w-[20px] h-[20px] rounded-full" style="background: radial-gradient(circle at 30% 30%, rgba(201,160,181,0.75), rgba(176,125,151,0.35)); box-shadow: 0 0 12px rgba(176,125,151,0.25);"></div>
+              </div>
+            </div>
+
+            <!-- Орбита 3 — Земля + Луна -->
+            <div class="orbit orbit-3 absolute top-1/2 left-1/2 w-[62%] h-[62%] rounded-full" style="border: 2.5px solid rgba(216,180,254,0.16);">
+              <div class="planet absolute -top-[13px] left-1/2 -translate-x-1/2">
+                <div class="relative">
+                  <!-- Земля -->
+                  <div class="w-[26px] h-[26px] rounded-full" style="background: radial-gradient(circle at 30% 30%, rgba(192,132,252,0.7), rgba(168,85,247,0.3)); box-shadow: 0 0 14px rgba(192,132,252,0.25);"></div>
+                  <!-- Луна — вращается вокруг Земли -->
+                  <div class="moon-orbit absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[48px] h-[48px]">
+                    <div class="absolute -top-[5px] left-1/2 -translate-x-1/2 w-[11px] h-[11px] rounded-full" style="background: radial-gradient(circle at 35% 35%, rgba(216,180,254,0.65), rgba(192,132,252,0.3));"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Орбита 4 — Марс -->
+            <div class="orbit orbit-4 absolute top-1/2 left-1/2 w-[82%] h-[82%] rounded-full" style="border: 2px solid rgba(216,180,254,0.12);">
+              <div class="planet absolute -top-[9px] left-1/2 -translate-x-1/2">
+                <div class="w-[18px] h-[18px] rounded-full" style="background: radial-gradient(circle at 30% 30%, rgba(176,125,151,0.65), rgba(157,97,125,0.25)); box-shadow: 0 0 10px rgba(176,125,151,0.2);"></div>
+              </div>
+            </div>
+
+            <!-- Орбита 5 — Юпитер (далёкая) -->
+            <div class="orbit orbit-5 absolute top-1/2 left-1/2 w-[98%] h-[98%] rounded-full" style="border: 2px solid rgba(216,180,254,0.08);">
+              <div class="planet absolute -top-[7px] left-1/2 -translate-x-1/2">
+                <div class="w-[14px] h-[14px] rounded-full" style="background: radial-gradient(circle at 30% 30%, rgba(216,180,254,0.45), rgba(192,132,252,0.15)); box-shadow: 0 0 8px rgba(192,132,252,0.1);"></div>
+              </div>
+            </div>
+          </div>
+
           <!-- Фото -->
-          <div class="relative aspect-[3/4] rounded-3xl overflow-hidden shadow-2xl shadow-lavender-400/20">
+          <div class="relative aspect-[3/4] rounded-3xl overflow-hidden shadow-2xl shadow-lavender-400/20 z-10">
             <img
               src="/images/photos/hero.jpg"
               alt="Астролог Юлия Плотникова"
