@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+/* ===== Custom Theme (Tailwind v4 CSS-first) ===== */
+@theme {
+  /* --- Colors --- */
+  --color-gold-50: #fefcf3;
+  --color-gold-100: #fdf8e1;
+  --color-gold-200: #faeec4;
+  --color-gold-300: #f5dd9d;
+  --color-gold-400: #efc56f;
+  --color-gold-500: #e8ad4f;
+  --color-gold-600: #d89338;
+  --color-gold-700: #b4732b;
+  --color-gold-800: #915c29;
+  --color-gold-900: #764c25;
+
+  --color-lavender-50: #faf9fc;
+  --color-lavender-100: #f4f2f9;
+  --color-lavender-200: #ebe7f4;
+  --color-lavender-300: #ddd5eb;
+  --color-lavender-400: #c9bce0;
+  --color-lavender-500: #b49fd1;
+  --color-lavender-600: #9c82be;
+  --color-lavender-700: #846ba5;
+  --color-lavender-800: #6d5987;
+  --color-lavender-900: #5a4a6f;
+
+  --color-coral-50: #fff5f3;
+  --color-coral-100: #ffe9e4;
+  --color-coral-200: #ffd0c4;
+  --color-coral-300: #ffb09a;
+  --color-coral-400: #ff8a6a;
+  --color-coral-500: #ff6b47;
+  --color-coral-600: #ed4e25;
+  --color-coral-700: #c83d1a;
+  --color-coral-800: #a5351c;
+  --color-coral-900: #88311d;
+
+  --color-cream-50: #fdfcfa;
+  --color-cream-100: #faf8f4;
+  --color-cream-200: #f5f1e8;
+  --color-cream-300: #ede6d8;
+  --color-cream-400: #e3d7c3;
+  --color-cream-500: #d5c5aa;
+
+  /* --- Fonts --- */
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Inter', sans-serif;
+  --font-script: 'Dancing Script', cursive;
+}
+
+/* ===== Base Styles ===== */
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-body);
+  color: #3d3a36;
+  background-color: var(--color-cream-50);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: #2d2a26;
+}
+
+::selection {
+  background-color: var(--color-gold-200);
+  color: var(--color-gold-900);
+}
+
+/* ===== Scroll indicator ===== */
+@keyframes scroll-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
+
+.scroll-indicator {
+  animation: scroll-bounce 2s ease-in-out infinite;
+}
+
+/* ===== Section spacing ===== */
+.section-padding {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+  }
+}
+
+/* ===== Smooth transitions ===== */
+.card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(232, 173, 79, 0.15);
+}

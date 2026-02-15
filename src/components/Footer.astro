@@ -1,0 +1,35 @@
+---
+import SocialLinks from './ui/SocialLinks.astro';
+---
+
+<footer class="bg-gray-900 text-gray-400 py-12">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+      <!-- Logo + copyright -->
+      <div class="flex items-center gap-3">
+        <svg class="w-6 h-6 text-gold-500" viewBox="0 0 32 32" fill="currentColor">
+          <path d="M16 2l3.09 9.51h10l-8.09 5.88 3.09 9.51L16 21.02l-8.09 5.88 3.09-9.51L2.91 11.51h10z"/>
+        </svg>
+        <span class="text-gray-300">
+          &copy; {new Date().getFullYear()} Астролог Юлия. Все права защищены.
+        </span>
+      </div>
+
+      <!-- Social links -->
+      <SocialLinks size="sm" />
+    </div>
+
+    <!-- Back to top -->
+    <div class="text-center mt-8">
+      <a
+        href="#"
+        class="inline-flex items-center gap-2 text-gray-500 hover:text-gold-400 transition-colors text-sm"
+      >
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
+        </svg>
+        Наверх
+      </a>
+    </div>
+  </div>
+</footer>

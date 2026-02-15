@@ -1,0 +1,96 @@
+---
+import SocialLinks from './ui/SocialLinks.astro';
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 transition-all duration-500" id="header">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-18 sm:h-20">
+      <!-- Logo -->
+      <a href="#" class="flex items-center gap-2 group">
+        <svg class="w-8 h-8 text-gold-500" viewBox="0 0 32 32" fill="currentColor">
+          <path d="M16 2l3.09 9.51h10l-8.09 5.88 3.09 9.51L16 21.02l-8.09 5.88 3.09-9.51L2.91 11.51h10z"/>
+        </svg>
+        <span class="font-script text-2xl text-gold-600 group-hover:text-gold-700 transition-colors">Юлия</span>
+      </a>
+
+      <!-- Nav (desktop) -->
+      <nav class="hidden md:flex items-center gap-8">
+        <a href="#about" class="text-gray-600 hover:text-gold-600 transition-colors font-medium">О себе</a>
+        <a href="#services" class="text-gray-600 hover:text-gold-600 transition-colors font-medium">Услуги</a>
+        <a href="#reviews" class="text-gray-600 hover:text-gold-600 transition-colors font-medium">Отзывы</a>
+        <a href="#faq" class="text-gray-600 hover:text-gold-600 transition-colors font-medium">FAQ</a>
+        <a
+          href="https://wa.me/79100051667"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="px-6 py-2.5 bg-gold-500 text-white rounded-full font-medium hover:bg-gold-600 transition-all duration-300 shadow-md hover:shadow-lg"
+        >
+          Записаться
+        </a>
+      </nav>
+
+      <!-- Mobile menu button -->
+      <button class="md:hidden p-2 text-gray-600 hover:text-gold-600 transition-colors" id="mobile-menu-btn" aria-label="Меню">
+        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" id="menu-icon-open" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div class="md:hidden hidden" id="mobile-menu">
+    <div class="bg-white/95 backdrop-blur-md border-t border-cream-200 shadow-lg">
+      <nav class="flex flex-col px-6 py-4 gap-1">
+        <a href="#about" class="py-3 text-gray-700 hover:text-gold-600 transition-colors font-medium mobile-link">О себе</a>
+        <a href="#services" class="py-3 text-gray-700 hover:text-gold-600 transition-colors font-medium mobile-link">Услуги</a>
+        <a href="#reviews" class="py-3 text-gray-700 hover:text-gold-600 transition-colors font-medium mobile-link">Отзывы</a>
+        <a href="#faq" class="py-3 text-gray-700 hover:text-gold-600 transition-colors font-medium mobile-link">FAQ</a>
+        <a
+          href="https://wa.me/79100051667"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mt-2 px-6 py-3 bg-gold-500 text-white rounded-full font-medium text-center hover:bg-gold-600 transition-all"
+        >
+          Записаться на консультацию
+        </a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<script>
+  // Header scroll effect
+  const header = document.getElementById('header');
+  let lastScroll = 0;
+
+  function updateHeader() {
+    const currentScroll = window.scrollY;
+    if (!header) return;
+
+    if (currentScroll > 80) {
+      header.classList.add('bg-white/90', 'backdrop-blur-md', 'shadow-sm');
+    } else {
+      header.classList.remove('bg-white/90', 'backdrop-blur-md', 'shadow-sm');
+    }
+    lastScroll = currentScroll;
+  }
+
+  window.addEventListener('scroll', updateHeader, { passive: true });
+  updateHeader();
+
+  // Mobile menu toggle
+  const mobileBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  mobileBtn?.addEventListener('click', () => {
+    mobileMenu?.classList.toggle('hidden');
+  });
+
+  // Close mobile menu on link click
+  document.querySelectorAll('.mobile-link').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu?.classList.add('hidden');
+    });
+  });
+</script>

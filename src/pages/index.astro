@@ -1,0 +1,338 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/sections/Hero.astro';
+import About from '../components/sections/About.astro';
+import Services from '../components/sections/Services.astro';
+import HowItWorks from '../components/sections/HowItWorks.astro';
+import Reviews from '../components/sections/Reviews.astro';
+import FAQ from '../components/sections/FAQ.astro';
+import Contact from '../components/sections/Contact.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout>
+  <Header />
+  <main>
+    <Hero />
+    <About />
+    <Services />
+    <HowItWorks />
+    <Reviews />
+    <FAQ />
+    <Contact />
+  </main>
+  <Footer />
+
+  <!-- GSAP Animations -->
+  <script>
+    import { gsap } from 'gsap';
+    import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    // ===== Hero Animations =====
+    function initHero() {
+      // Set initial states
+      gsap.set(['.hero-subtitle', '.hero-title', '.hero-desc', '.hero-cta'], { y: 30 });
+
+      // Floating stars
+      gsap.utils.toArray<HTMLElement>('.hero-star').forEach((star) => {
+        gsap.to(star, {
+          y: `random(-25, 25)`,
+          x: `random(-25, 25)`,
+          rotation: `random(-15, 15)`,
+          duration: `random(3, 6)`,
+          repeat: -1,
+          yoyo: true,
+          ease: 'sine.inOut',
+          delay: `random(0, 2)`,
+        });
+      });
+
+      // Text reveal
+      const heroTl = gsap.timeline({ delay: 0.3 });
+      heroTl
+        .to('.hero-subtitle', { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' })
+        .to('.hero-title', { opacity: 1, y: 0, duration: 1, ease: 'power3.out' }, '-=0.5')
+        .to('.hero-desc', { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' }, '-=0.5')
+        .to('.hero-cta', { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' }, '-=0.4');
+    }
+
+    // ===== Scroll Reveal =====
+    function initScrollReveal() {
+      // Section reveals
+      gsap.utils.toArray<HTMLElement>('.section-reveal').forEach((el) => {
+        gsap.from(el, {
+          y: 50,
+          opacity: 0,
+          duration: 1,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 85%',
+            once: true,
+          },
+        });
+      });
+
+      // About section
+      const aboutImage = document.querySelector('.about-image');
+      const aboutText = document.querySelector('.about-text');
+
+      if (aboutImage) {
+        gsap.from(aboutImage, {
+          x: -60,
+          opacity: 0,
+          duration: 1,
+          ease: 'power3.out',
+          scrollTrigger: { trigger: aboutImage, start: 'top 80%', once: true },
+        });
+      }
+
+      if (aboutText) {
+        gsap.from(aboutText, {
+          x: 60,
+          opacity: 0,
+          duration: 1,
+          ease: 'power3.out',
+          scrollTrigger: { trigger: aboutText, start: 'top 80%', once: true },
+        });
+      }
+
+      // Service cards stagger
+      gsap.from('.service-card', {
+        y: 60,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.12,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: '.services-grid',
+          start: 'top 80%',
+          once: true,
+        },
+      });
+
+      // Steps stagger
+      gsap.from('.step-item', {
+        y: 50,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.2,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: '.step-item',
+          start: 'top 85%',
+          once: true,
+        },
+      });
+
+      // Step connecting line
+      const stepLine = document.querySelector('.step-line');
+      if (stepLine) {
+        gsap.from(stepLine, {
+          scaleX: 0,
+          transformOrigin: 'left center',
+          duration: 1.2,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: stepLine,
+            start: 'top 80%',
+            once: true,
+          },
+        });
+      }
+
+      // Review slides
+      gsap.from('.review-slide', {
+        y: 40,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.15,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: '.reviews-carousel',
+          start: 'top 80%',
+          once: true,
+        },
+      });
+
+      // Contact buttons
+      const contactBtns = document.querySelector('.contact-buttons');
+      if (contactBtns) {
+        gsap.from(contactBtns, {
+          y: 30,
+          opacity: 0,
+          duration: 0.8,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: contactBtns,
+            start: 'top 85%',
+            once: true,
+          },
+        });
+      }
+    }
+
+    // ===== Parallax =====
+    function initParallax() {
+      gsap.utils.toArray<HTMLElement>('.parallax-slow').forEach((el) => {
+        gsap.to(el, {
+          y: 80,
+          scrollTrigger: {
+            trigger: el.parentElement,
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: 1.5,
+          },
+        });
+      });
+    }
+
+    // ===== Reviews Carousel =====
+    function initCarousel() {
+      const track = document.getElementById('reviews-track') as HTMLElement;
+      const dotsContainer = document.getElementById('carousel-dots');
+      const prevBtn = document.querySelector('.carousel-prev');
+      const nextBtn = document.querySelector('.carousel-next');
+
+      if (!track || !dotsContainer) return;
+
+      const slides = track.querySelectorAll('.review-slide');
+      let currentIndex = 0;
+      let slidesPerView = 1;
+      let autoplayInterval: ReturnType<typeof setInterval>;
+
+      function updateSlidesPerView() {
+        if (window.innerWidth >= 1024) slidesPerView = 3;
+        else if (window.innerWidth >= 640) slidesPerView = 2;
+        else slidesPerView = 1;
+      }
+
+      function getMaxIndex() {
+        return Math.max(0, slides.length - slidesPerView);
+      }
+
+      function createDots() {
+        dotsContainer!.innerHTML = '';
+        const count = getMaxIndex() + 1;
+        for (let i = 0; i < count; i++) {
+          const dot = document.createElement('button');
+          dot.className = `w-2.5 h-2.5 rounded-full transition-all duration-300 cursor-pointer ${
+            i === currentIndex ? 'bg-gold-500 w-8' : 'bg-cream-300'
+          }`;
+          dot.setAttribute('aria-label', `Слайд ${i + 1}`);
+          dot.addEventListener('click', () => goTo(i));
+          dotsContainer!.appendChild(dot);
+        }
+      }
+
+      function goTo(index: number) {
+        currentIndex = Math.max(0, Math.min(index, getMaxIndex()));
+        const containerWidth = track.parentElement!.offsetWidth;
+        const gap = 24;
+        const slideWidth = (containerWidth - gap * (slidesPerView - 1)) / slidesPerView;
+        track.style.transform = `translateX(-${currentIndex * (slideWidth + gap)}px)`;
+        createDots();
+      }
+
+      function next() {
+        goTo(currentIndex >= getMaxIndex() ? 0 : currentIndex + 1);
+      }
+
+      function prev() {
+        goTo(currentIndex <= 0 ? getMaxIndex() : currentIndex - 1);
+      }
+
+      function startAutoplay() {
+        stopAutoplay();
+        autoplayInterval = setInterval(next, 5000);
+      }
+
+      function stopAutoplay() {
+        if (autoplayInterval) clearInterval(autoplayInterval);
+      }
+
+      updateSlidesPerView();
+      createDots();
+      startAutoplay();
+
+      prevBtn?.addEventListener('click', () => { prev(); startAutoplay(); });
+      nextBtn?.addEventListener('click', () => { next(); startAutoplay(); });
+
+      // Touch/swipe support
+      let touchStartX = 0;
+      track.addEventListener('touchstart', (e) => {
+        touchStartX = e.touches[0].clientX;
+        stopAutoplay();
+      }, { passive: true });
+
+      track.addEventListener('touchend', (e) => {
+        const diff = touchStartX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 50) {
+          diff > 0 ? next() : prev();
+        }
+        startAutoplay();
+      }, { passive: true });
+
+      window.addEventListener('resize', () => {
+        updateSlidesPerView();
+        goTo(Math.min(currentIndex, getMaxIndex()));
+      });
+
+      track.addEventListener('mouseenter', stopAutoplay);
+      track.addEventListener('mouseleave', startAutoplay);
+    }
+
+    // ===== FAQ Accordion =====
+    function initFAQ() {
+      const faqItems = document.querySelectorAll('.faq-item');
+
+      faqItems.forEach((item) => {
+        const question = item.querySelector('.faq-question');
+        const answer = item.querySelector('.faq-answer') as HTMLElement;
+        const icon = item.querySelector('.faq-icon');
+
+        if (!question || !answer || !icon) return;
+
+        question.addEventListener('click', () => {
+          const isOpen = item.classList.contains('active');
+
+          // Close all others
+          faqItems.forEach((other) => {
+            if (other === item) return;
+            other.classList.remove('active');
+            const otherAnswer = other.querySelector('.faq-answer') as HTMLElement;
+            const otherIcon = other.querySelector('.faq-icon');
+            const otherBtn = other.querySelector('.faq-question');
+            if (otherAnswer) gsap.to(otherAnswer, { height: 0, duration: 0.3, ease: 'power2.inOut' });
+            if (otherIcon) gsap.to(otherIcon, { rotation: 0, duration: 0.3 });
+            otherBtn?.setAttribute('aria-expanded', 'false');
+          });
+
+          if (isOpen) {
+            item.classList.remove('active');
+            gsap.to(answer, { height: 0, duration: 0.3, ease: 'power2.inOut' });
+            gsap.to(icon, { rotation: 0, duration: 0.3 });
+            question.setAttribute('aria-expanded', 'false');
+          } else {
+            item.classList.add('active');
+            gsap.to(answer, { height: 'auto', duration: 0.4, ease: 'power2.out' });
+            gsap.to(icon, { rotation: 180, duration: 0.3 });
+            question.setAttribute('aria-expanded', 'true');
+          }
+        });
+      });
+    }
+
+    // ===== Init All =====
+    document.addEventListener('DOMContentLoaded', () => {
+      initHero();
+      initScrollReveal();
+      initParallax();
+      initCarousel();
+      initFAQ();
+    });
+  </script>
+</BaseLayout>

@@ -1,0 +1,56 @@
+---
+import ReviewCard from '../ui/ReviewCard.astro';
+import { reviews } from '../../data/reviews';
+---
+
+<section class="section-padding bg-cream-50 overflow-hidden" id="reviews">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Section header -->
+    <div class="text-center mb-16 section-reveal">
+      <p class="font-script text-gold-600 text-xl mb-2">Что говорят клиенты</p>
+      <h2 class="font-heading text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+        Отзывы
+      </h2>
+      <p class="text-gray-600 max-w-2xl mx-auto text-lg">
+        Каждая консультация — это маленькое открытие. Вот что рассказывают мои клиенты о своём опыте.
+      </p>
+    </div>
+
+    <!-- Reviews carousel -->
+    <div class="relative">
+      <div class="reviews-carousel overflow-hidden">
+        <div class="reviews-track flex gap-6 transition-transform duration-700 ease-out" id="reviews-track">
+          {reviews.map((review) => (
+            <div class="review-slide min-w-full sm:min-w-[calc(50%-12px)] lg:min-w-[calc(33.333%-16px)] shrink-0">
+              <ReviewCard review={review} />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Navigation buttons -->
+      <div class="flex items-center justify-center gap-4 mt-8">
+        <button
+          class="carousel-prev w-12 h-12 rounded-full border-2 border-cream-300 bg-white flex items-center justify-center text-gray-500 hover:text-gold-600 hover:border-gold-400 transition-all duration-300 cursor-pointer"
+          aria-label="Предыдущий отзыв"
+        >
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+
+        <!-- Dots -->
+        <div class="flex gap-2" id="carousel-dots"></div>
+
+        <button
+          class="carousel-next w-12 h-12 rounded-full border-2 border-cream-300 bg-white flex items-center justify-center text-gray-500 hover:text-gold-600 hover:border-gold-400 transition-all duration-300 cursor-pointer"
+          aria-label="Следующий отзыв"
+        >
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

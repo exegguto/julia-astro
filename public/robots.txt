@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://julia-astro.ru/sitemap.xml
