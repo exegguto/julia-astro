@@ -99,6 +99,75 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0 20px 40px rgba(192, 132, 252, 0.12);
 }
 
+/* ===== Солнечная система — реалистичная анимация вращения ===== */
+@keyframes orbit-spin {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to   { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes moon-spin {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to   { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Пульсация солнца */
+@keyframes sun-pulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.25; }
+  50%      { transform: translate(-50%, -50%) scale(1.15); opacity: 0.35; }
+}
+
+.sun-glow {
+  animation: sun-pulse 4s ease-in-out infinite;
+}
+
+/*
+ * Каждая орбита вращается с разной скоростью.
+ * Отрицательный animation-delay "перематывает" планету
+ * в стартовую позицию, чтобы они не стояли в ряд.
+ */
+.orbit-1 {
+  animation: orbit-spin 14s linear infinite;
+  animation-delay: -3s;   /* ~77° */
+}
+.orbit-2 {
+  animation: orbit-spin 22s linear infinite;
+  animation-delay: -10s;  /* ~164° */
+}
+.orbit-3 {
+  animation: orbit-spin 36s linear infinite;
+  animation-delay: -28s;  /* ~280° */
+}
+.orbit-4 {
+  animation: orbit-spin 55s linear infinite;
+  animation-delay: -5s;   /* ~33° */
+}
+.orbit-5 {
+  animation: orbit-spin 90s linear infinite;
+  animation-delay: -50s;  /* ~200° */
+}
+
+/* Луна вокруг Земли — быстрое вращение */
+.moon-orbit {
+  animation: moon-spin 5s linear infinite;
+}
+
+/* Респонсив: на мобильных уменьшить и приглушить */
+@media (max-width: 767px) {
+  .solar-system {
+    width: 100vw !important;
+    height: 100vw !important;
+    opacity: 0.4;
+  }
+}
+
+/* reduce-motion: отключаем анимации для людей с вестибулярными нарушениями */
+@media (prefers-reduced-motion: reduce) {
+  .orbit-1, .orbit-2, .orbit-3, .orbit-4, .orbit-5,
+  .moon-orbit, .sun-glow {
+    animation: none !important;
+  }
+}
+
 /* ===== Маска фото героя ===== */
 .hero-photo-mask {
   clip-path: polygon(5% 0%, 95% 0%, 100% 5%, 100% 95%, 95% 100%, 5% 100%, 0% 95%, 0% 5%);

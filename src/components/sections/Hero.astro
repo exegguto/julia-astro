@@ -6,47 +6,61 @@ import Button from '../ui/Button.astro';
   <!-- Фон — чистый белый -->
   <div class="absolute inset-0 bg-white"></div>
 
-  <!-- Солнечная система — на всю высоту экрана, центр = правая часть (где фото) -->
-  <div class="absolute inset-0 pointer-events-none flex items-center justify-center md:justify-end md:pr-[12%] lg:pr-[14%]">
-    <svg class="h-[90vh] w-auto text-lavender-300" viewBox="0 0 32 32" fill="none" preserveAspectRatio="xMidYMid meet">
-      <!-- Солнце (центр) -->
-      <circle cx="16" cy="16" r="3.5" fill="currentColor" opacity="0.12"/>
-      <!-- Лучи солнца -->
-      <line x1="16" y1="10.5" x2="16" y2="9" stroke="currentColor" stroke-width="0.6" stroke-linecap="round" opacity="0.15"/>
-      <line x1="16" y1="21.5" x2="16" y2="23" stroke="currentColor" stroke-width="0.6" stroke-linecap="round" opacity="0.15"/>
-      <line x1="10.5" y1="16" x2="9" y2="16" stroke="currentColor" stroke-width="0.6" stroke-linecap="round" opacity="0.15"/>
-      <line x1="21.5" y1="16" x2="23" y2="16" stroke="currentColor" stroke-width="0.6" stroke-linecap="round" opacity="0.15"/>
-      <line x1="12.1" y1="12.1" x2="11" y2="11" stroke="currentColor" stroke-width="0.5" stroke-linecap="round" opacity="0.12"/>
-      <line x1="19.9" y1="12.1" x2="21" y2="11" stroke="currentColor" stroke-width="0.5" stroke-linecap="round" opacity="0.12"/>
-      <line x1="12.1" y1="19.9" x2="11" y2="21" stroke="currentColor" stroke-width="0.5" stroke-linecap="round" opacity="0.12"/>
-      <line x1="19.9" y1="19.9" x2="21" y2="21" stroke="currentColor" stroke-width="0.5" stroke-linecap="round" opacity="0.12"/>
-      <!-- Орбита 1 (Меркурий) -->
-      <circle cx="16" cy="16" r="6.5" stroke="currentColor" stroke-width="0.3" opacity="0.15"/>
-      <circle cx="22.5" cy="16" r="1" fill="currentColor" opacity="0.2"/>
-      <!-- Орбита 2 (Венера) -->
-      <circle cx="16" cy="16" r="9" stroke="currentColor" stroke-width="0.3" opacity="0.12"/>
-      <circle cx="16" cy="7" r="1.2" fill="currentColor" opacity="0.25"/>
-      <!-- Орбита 3 (Земля + Луна) -->
-      <circle cx="16" cy="16" r="12" stroke="currentColor" stroke-width="0.3" opacity="0.1"/>
-      <!-- Земля -->
-      <circle cx="4" cy="16" r="1.5" fill="currentColor" opacity="0.25"/>
-      <!-- Луна у Земли -->
-      <circle cx="5.8" cy="14.5" r="0.7" fill="currentColor" opacity="0.15"/>
-      <!-- Далёкая орбита (Марс) -->
-      <circle cx="16" cy="16" r="15" stroke="currentColor" stroke-width="0.2" opacity="0.07"/>
-      <circle cx="26" cy="22" r="0.9" fill="currentColor" opacity="0.12"/>
-    </svg>
-  </div>
+  <!-- Солнечная система — реалистичная, на всю высоту, с анимацией вращения -->
+  <div class="absolute inset-0 pointer-events-none flex items-center justify-center md:justify-end md:pr-[12%] lg:pr-[14%]" aria-hidden="true">
+    <div class="solar-system relative" style="width: 85vh; height: 85vh;">
+      <!-- Солнце — центральное свечение с пульсацией -->
+      <div class="sun-glow absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[10%] h-[10%] rounded-full" style="background: radial-gradient(circle, rgba(192,132,252,0.2) 0%, rgba(192,132,252,0.06) 50%, transparent 75%);"></div>
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[4.5%] h-[4.5%] rounded-full" style="background: radial-gradient(circle, rgba(192,132,252,0.35) 0%, rgba(176,125,151,0.15) 60%, transparent 100%);"></div>
 
-  <!-- Анимированные звёзды (нежная лаванда) -->
-  <div class="absolute inset-0 pointer-events-none" id="hero-stars">
-    <svg class="hero-star absolute top-[10%] left-[15%] w-3 h-3 text-lavender-300/40" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.09 6.26L20 10l-5.91 1.74L12 18l-2.09-6.26L4 10l5.91-1.74L12 2z"/></svg>
-    <svg class="hero-star absolute top-[20%] right-[20%] w-2.5 h-2.5 text-peach-300/30" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.09 6.26L20 10l-5.91 1.74L12 18l-2.09-6.26L4 10l5.91-1.74L12 2z"/></svg>
-    <svg class="hero-star absolute top-[45%] left-[5%] w-4 h-4 text-lavender-200/30" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.09 6.26L20 10l-5.91 1.74L12 18l-2.09-6.26L4 10l5.91-1.74L12 2z"/></svg>
-    <svg class="hero-star absolute top-[60%] right-[8%] w-3 h-3 text-peach-200/25" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.09 6.26L20 10l-5.91 1.74L12 18l-2.09-6.26L4 10l5.91-1.74L12 2z"/></svg>
-    <svg class="hero-star absolute top-[75%] left-[30%] w-2 h-2 text-lavender-300/30" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.09 6.26L20 10l-5.91 1.74L12 18l-2.09-6.26L4 10l5.91-1.74L12 2z"/></svg>
-    <svg class="hero-star absolute top-[15%] left-[55%] w-3.5 h-3.5 text-lavender-400/20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.09 6.26L20 10l-5.91 1.74L12 18l-2.09-6.26L4 10l5.91-1.74L12 2z"/></svg>
-    <svg class="hero-star absolute top-[80%] right-[35%] w-3 h-3 text-peach-200/25" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.09 6.26L20 10l-5.91 1.74L12 18l-2.09-6.26L4 10l5.91-1.74L12 2z"/></svg>
+      <!-- Лучи солнца (тонкие линии) -->
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[12%] h-[0.5px] bg-gradient-to-r from-transparent via-lavender-300/20 to-transparent"></div>
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[12%] w-[0.5px] bg-gradient-to-b from-transparent via-lavender-300/20 to-transparent"></div>
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[10%] h-[0.5px] bg-gradient-to-r from-transparent via-lavender-300/15 to-transparent rotate-45"></div>
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[10%] h-[0.5px] bg-gradient-to-r from-transparent via-lavender-300/15 to-transparent -rotate-45"></div>
+
+      <!-- Орбита 1 — Меркурий (самая быстрая) -->
+      <div class="orbit orbit-1 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[28%] h-[28%] rounded-full border border-lavender-300/[0.12]">
+        <div class="planet absolute -top-[5px] left-1/2 -translate-x-1/2">
+          <div class="w-[10px] h-[10px] rounded-full" style="background: radial-gradient(circle at 35% 35%, rgba(216,180,254,0.6), rgba(192,132,252,0.25));"></div>
+        </div>
+      </div>
+
+      <!-- Орбита 2 — Венера -->
+      <div class="orbit orbit-2 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[44%] h-[44%] rounded-full border border-lavender-300/[0.10]">
+        <div class="planet absolute -top-[7px] left-1/2 -translate-x-1/2">
+          <div class="w-[14px] h-[14px] rounded-full" style="background: radial-gradient(circle at 35% 35%, rgba(201,160,181,0.55), rgba(176,125,151,0.2));"></div>
+        </div>
+      </div>
+
+      <!-- Орбита 3 — Земля + Луна -->
+      <div class="orbit orbit-3 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[62%] h-[62%] rounded-full border border-lavender-300/[0.08]">
+        <div class="planet absolute -top-[9px] left-1/2 -translate-x-1/2">
+          <!-- Земля -->
+          <div class="relative">
+            <div class="w-[18px] h-[18px] rounded-full" style="background: radial-gradient(circle at 35% 35%, rgba(192,132,252,0.5), rgba(168,85,247,0.15));"></div>
+            <!-- Луна — вращается вокруг Земли -->
+            <div class="moon-orbit absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[34px] h-[34px]">
+              <div class="absolute -top-[3px] left-1/2 -translate-x-1/2 w-[6px] h-[6px] rounded-full" style="background: radial-gradient(circle at 40% 40%, rgba(216,180,254,0.5), rgba(192,132,252,0.15));"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Орбита 4 — Марс (самая медленная) -->
+      <div class="orbit orbit-4 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[82%] h-[82%] rounded-full border border-lavender-300/[0.06]">
+        <div class="planet absolute -top-[6px] left-1/2 -translate-x-1/2">
+          <div class="w-[12px] h-[12px] rounded-full" style="background: radial-gradient(circle at 35% 35%, rgba(176,125,151,0.45), rgba(157,97,125,0.12));"></div>
+        </div>
+      </div>
+
+      <!-- Орбита 5 — далёкая, еле видная (Юпитер) -->
+      <div class="orbit orbit-5 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[98%] h-[98%] rounded-full border border-lavender-200/[0.04]">
+        <div class="planet absolute -top-[4px] left-1/2 -translate-x-1/2">
+          <div class="w-[8px] h-[8px] rounded-full" style="background: radial-gradient(circle at 35% 35%, rgba(216,180,254,0.3), rgba(192,132,252,0.08));"></div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- Контент: два столбца -->
@@ -86,10 +100,6 @@ import Button from '../ui/Button.astro';
             />
             <div class="absolute inset-0 bg-gradient-to-t from-dark-900/10 via-transparent to-transparent"></div>
           </div>
-
-          <!-- Декоративный акцент -->
-          <div class="absolute -bottom-3 -right-3 w-20 h-20 bg-lavender-200/40 rounded-full blur-xl"></div>
-          <div class="absolute -top-3 -left-3 w-16 h-16 bg-peach-100/30 rounded-full blur-xl"></div>
         </div>
       </div>
     </div>
