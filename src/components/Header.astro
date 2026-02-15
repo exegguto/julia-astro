@@ -29,7 +29,7 @@ import SocialLinks from './ui/SocialLinks.astro';
       </a>
 
       <!-- Навигация (десктоп) -->
-      <nav class="hidden md:flex items-center gap-8">
+      <nav class="hidden md:flex items-center gap-8" aria-label="Основная навигация">
         <a href="#about" class="text-dark-500 hover:text-dark-900 transition-colors font-medium">О себе</a>
         <a href="#services" class="text-dark-500 hover:text-dark-900 transition-colors font-medium">Услуги</a>
         <a href="#reviews" class="text-dark-500 hover:text-dark-900 transition-colors font-medium">Отзывы</a>
@@ -63,7 +63,7 @@ import SocialLinks from './ui/SocialLinks.astro';
       <div class="absolute top-24 right-8 w-40 h-40 bg-lavender-100/30 rounded-full blur-3xl"></div>
       <div class="absolute bottom-32 left-8 w-32 h-32 bg-peach-50/40 rounded-full blur-3xl"></div>
 
-      <nav class="flex flex-col items-center justify-center h-full gap-1 pb-20">
+      <nav class="flex flex-col items-center justify-center h-full gap-1 pb-20" aria-label="Мобильная навигация">
         <a href="#about" class="mobile-link py-4 px-8 text-2xl font-heading font-semibold text-dark-800 hover:text-peach-500 transition-colors">О себе</a>
         <a href="#services" class="mobile-link py-4 px-8 text-2xl font-heading font-semibold text-dark-800 hover:text-peach-500 transition-colors">Услуги</a>
         <a href="#reviews" class="mobile-link py-4 px-8 text-2xl font-heading font-semibold text-dark-800 hover:text-peach-500 transition-colors">Отзывы</a>

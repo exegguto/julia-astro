@@ -1,0 +1,22 @@
+{
+  "name": "Астролог Юлия Плотникова",
+  "short_name": "Юлия Астролог",
+  "description": "Профессиональные астрологические консультации: натальная карта, солярный прогноз, профориентация",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#c084fc",
+  "lang": "ru",
+  "icons": [
+    {
+      "src": "/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}
