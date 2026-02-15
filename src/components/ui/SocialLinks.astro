@@ -33,33 +33,17 @@ const links = [
 ];
 ---
 
-{variant === 'buttons' ? (
-  <div class="flex flex-col sm:flex-row gap-4 justify-center">
-    {links.map((link) => (
-      <a
-        href={link.href}
-        target="_blank"
-        rel="noopener noreferrer"
-        class={`inline-flex items-center gap-3 px-8 py-4 rounded-full border-2 border-warm-400 bg-white text-dark-700 font-medium transition-all duration-300 hover:text-white hover:shadow-lg ${link.color}`}
-        aria-label={link.name}
-      >
-        <span class={iconSizes[size]} set:html={link.icon} />
-        {link.name}
-      </a>
-    ))}
-  </div>
-) : (
-  <div class="flex items-center gap-3">
-    {links.map((link) => (
-      <a
-        href={link.href}
-        target="_blank"
-        rel="noopener noreferrer"
-        class={`${containerSizes[size]} rounded-full border-2 border-warm-400 bg-white flex items-center justify-center text-dark-400 transition-all duration-300 hover:text-white hover:shadow-lg ${link.color}`}
-        aria-label={link.name}
-      >
-        <span class={iconSizes[size]} set:html={link.icon} />
-      </a>
-    ))}
-  </div>
-)}
+{/* Всегда только иконки — без текста */}
+<div class={`flex items-center ${variant === 'buttons' ? 'gap-5 justify-center' : 'gap-3'}`}>
+  {links.map((link) => (
+    <a
+      href={link.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      class={`${variant === 'buttons' ? 'w-14 h-14' : containerSizes[size]} rounded-full border-2 border-warm-400 bg-white flex items-center justify-center text-dark-400 transition-all duration-300 hover:text-white hover:shadow-lg ${link.color}`}
+      aria-label={link.name}
+    >
+      <span class={variant === 'buttons' ? 'w-7 h-7' : iconSizes[size]} set:html={link.icon} />
+    </a>
+  ))}
+</div>

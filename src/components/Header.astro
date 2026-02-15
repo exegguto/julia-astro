@@ -5,18 +5,29 @@ import SocialLinks from './ui/SocialLinks.astro';
 <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-500" id="header">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-18 sm:h-20">
-      <!-- Логотип -->
+      <!-- Логотип — солнечная система -->
       <a href="#" class="flex items-center gap-2.5 group">
-        <svg class="w-8 h-8 text-peach-400" viewBox="0 0 32 32" fill="none">
-          <circle cx="16" cy="16" r="14" stroke="currentColor" stroke-width="1.5"/>
-          <circle cx="16" cy="16" r="9" stroke="currentColor" stroke-width="1"/>
-          <line x1="16" y1="2" x2="16" y2="30" stroke="currentColor" stroke-width="0.8" opacity="0.5"/>
-          <line x1="2" y1="16" x2="30" y2="16" stroke="currentColor" stroke-width="0.8" opacity="0.5"/>
-          <circle cx="16" cy="5" r="1.8" fill="currentColor"/>
-          <circle cx="25" cy="10" r="1.5" fill="currentColor" opacity="0.8"/>
-          <circle cx="8" cy="22" r="1.5" fill="currentColor" opacity="0.8"/>
-          <circle cx="24" cy="24" r="1.8" fill="currentColor"/>
-          <circle cx="10" cy="10" r="1.3" fill="currentColor" opacity="0.6"/>
+        <svg class="w-9 h-9 text-peach-400" viewBox="0 0 32 32" fill="none">
+          <!-- Солнце -->
+          <circle cx="16" cy="16" r="3.5" fill="currentColor"/>
+          <!-- Лучи -->
+          <line x1="16" y1="10.5" x2="16" y2="9" stroke="currentColor" stroke-width="0.8" stroke-linecap="round"/>
+          <line x1="16" y1="21.5" x2="16" y2="23" stroke="currentColor" stroke-width="0.8" stroke-linecap="round"/>
+          <line x1="10.5" y1="16" x2="9" y2="16" stroke="currentColor" stroke-width="0.8" stroke-linecap="round"/>
+          <line x1="21.5" y1="16" x2="23" y2="16" stroke="currentColor" stroke-width="0.8" stroke-linecap="round"/>
+          <line x1="12.1" y1="12.1" x2="11" y2="11" stroke="currentColor" stroke-width="0.7" stroke-linecap="round"/>
+          <line x1="19.9" y1="12.1" x2="21" y2="11" stroke="currentColor" stroke-width="0.7" stroke-linecap="round"/>
+          <line x1="12.1" y1="19.9" x2="11" y2="21" stroke="currentColor" stroke-width="0.7" stroke-linecap="round"/>
+          <line x1="19.9" y1="19.9" x2="21" y2="21" stroke="currentColor" stroke-width="0.7" stroke-linecap="round"/>
+          <!-- Орбиты -->
+          <circle cx="16" cy="16" r="6.5" stroke="currentColor" stroke-width="0.4" opacity="0.3"/>
+          <circle cx="22.5" cy="16" r="1" fill="currentColor" opacity="0.7"/>
+          <circle cx="16" cy="16" r="9" stroke="currentColor" stroke-width="0.4" opacity="0.25"/>
+          <circle cx="16" cy="7" r="1.2" fill="currentColor" opacity="0.8"/>
+          <circle cx="16" cy="16" r="12" stroke="currentColor" stroke-width="0.4" opacity="0.2"/>
+          <!-- Земля + Луна -->
+          <circle cx="4" cy="16" r="1.5" fill="currentColor" opacity="0.9"/>
+          <circle cx="5.8" cy="14.5" r="0.7" fill="currentColor" opacity="0.5"/>
         </svg>
         <span class="font-script text-xl sm:text-2xl text-dark-900 group-hover:text-peach-500 transition-colors">Юлия Плотникова</span>
       </a>
@@ -38,30 +49,40 @@ import SocialLinks from './ui/SocialLinks.astro';
       </nav>
 
       <!-- Кнопка мобильного меню -->
-      <button class="md:hidden p-2 text-dark-500 hover:text-dark-900 transition-colors" id="mobile-menu-btn" aria-label="Меню">
-        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" id="menu-icon-open" />
-        </svg>
+      <button class="md:hidden relative w-10 h-10 flex items-center justify-center text-dark-700" id="mobile-menu-btn" aria-label="Меню">
+        <div class="menu-lines">
+          <span class="block w-6 h-0.5 bg-current transition-all duration-300 origin-center" id="line1"></span>
+          <span class="block w-6 h-0.5 bg-current mt-1.5 transition-all duration-300 origin-center" id="line2"></span>
+          <span class="block w-4 h-0.5 bg-current mt-1.5 transition-all duration-300 origin-center" id="line3"></span>
+        </div>
       </button>
     </div>
   </div>
 
-  <!-- Мобильное меню -->
-  <div class="md:hidden hidden" id="mobile-menu">
-    <div class="bg-white/95 backdrop-blur-md border-t border-warm-300 shadow-lg">
-      <nav class="flex flex-col px-6 py-4 gap-1">
-        <a href="#about" class="py-3 text-dark-700 hover:text-peach-500 transition-colors font-medium mobile-link">О себе</a>
-        <a href="#services" class="py-3 text-dark-700 hover:text-peach-500 transition-colors font-medium mobile-link">Услуги</a>
-        <a href="#reviews" class="py-3 text-dark-700 hover:text-peach-500 transition-colors font-medium mobile-link">Отзывы</a>
-        <a href="#faq" class="py-3 text-dark-700 hover:text-peach-500 transition-colors font-medium mobile-link">FAQ</a>
+  <!-- Мобильное меню — полноэкранное, красивое -->
+  <div class="md:hidden fixed inset-0 top-0 z-40 pointer-events-none opacity-0 transition-opacity duration-300" id="mobile-menu">
+    <div class="absolute inset-0 bg-white pointer-events-auto">
+      <!-- Декоративные элементы -->
+      <div class="absolute top-20 right-8 w-40 h-40 bg-lavender-100/40 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-32 left-8 w-32 h-32 bg-peach-50/60 rounded-full blur-3xl"></div>
+
+      <nav class="flex flex-col items-center justify-center h-full gap-2 -mt-10">
+        <a href="#about" class="mobile-link py-4 text-2xl font-heading font-semibold text-dark-800 hover:text-peach-500 transition-colors duration-300">О себе</a>
+        <a href="#services" class="mobile-link py-4 text-2xl font-heading font-semibold text-dark-800 hover:text-peach-500 transition-colors duration-300">Услуги</a>
+        <a href="#reviews" class="mobile-link py-4 text-2xl font-heading font-semibold text-dark-800 hover:text-peach-500 transition-colors duration-300">Отзывы</a>
+        <a href="#faq" class="mobile-link py-4 text-2xl font-heading font-semibold text-dark-800 hover:text-peach-500 transition-colors duration-300">FAQ</a>
         <a
           href="https://t.me/+79100051667"
           target="_blank"
           rel="noopener noreferrer"
-          class="mt-2 px-6 py-3 bg-dark-900 text-white rounded-full font-medium text-center hover:bg-dark-800 transition-all whitespace-nowrap"
+          class="mt-6 px-10 py-4 bg-dark-900 text-white rounded-full font-medium text-lg hover:bg-dark-800 transition-all whitespace-nowrap shadow-lg"
         >
           Записаться
         </a>
+        <!-- Соцсети в меню -->
+        <div class="mt-8">
+          <SocialLinks size="md" />
+        </div>
       </nav>
     </div>
   </div>
@@ -69,33 +90,54 @@ import SocialLinks from './ui/SocialLinks.astro';
 
 <script>
   const header = document.getElementById('header');
-  let lastScroll = 0;
 
   function updateHeader() {
     const currentScroll = window.scrollY;
     if (!header) return;
-
     if (currentScroll > 80) {
       header.classList.add('bg-white/90', 'backdrop-blur-md', 'shadow-sm');
     } else {
       header.classList.remove('bg-white/90', 'backdrop-blur-md', 'shadow-sm');
     }
-    lastScroll = currentScroll;
   }
 
   window.addEventListener('scroll', updateHeader, { passive: true });
   updateHeader();
 
+  // Мобильное меню
   const mobileBtn = document.getElementById('mobile-menu-btn');
   const mobileMenu = document.getElementById('mobile-menu');
+  const line1 = document.getElementById('line1');
+  const line2 = document.getElementById('line2');
+  const line3 = document.getElementById('line3');
+  let menuOpen = false;
 
-  mobileBtn?.addEventListener('click', () => {
-    mobileMenu?.classList.toggle('hidden');
-  });
+  function toggleMenu() {
+    menuOpen = !menuOpen;
+    if (menuOpen) {
+      mobileMenu?.classList.remove('opacity-0', 'pointer-events-none');
+      mobileMenu?.classList.add('opacity-100');
+      document.body.style.overflow = 'hidden';
+      // Анимация бургера → крестик
+      if (line1) { line1.style.transform = 'rotate(45deg) translate(3px, 3px)'; }
+      if (line2) { line2.style.opacity = '0'; }
+      if (line3) { line3.style.transform = 'rotate(-45deg) translate(2px, -2px)'; line3.style.width = '1.5rem'; }
+    } else {
+      mobileMenu?.classList.add('opacity-0', 'pointer-events-none');
+      mobileMenu?.classList.remove('opacity-100');
+      document.body.style.overflow = '';
+      // Анимация крестик → бургер
+      if (line1) { line1.style.transform = ''; }
+      if (line2) { line2.style.opacity = '1'; }
+      if (line3) { line3.style.transform = ''; line3.style.width = '1rem'; }
+    }
+  }
+
+  mobileBtn?.addEventListener('click', toggleMenu);
 
   document.querySelectorAll('.mobile-link').forEach(link => {
     link.addEventListener('click', () => {
-      mobileMenu?.classList.add('hidden');
+      if (menuOpen) toggleMenu();
     });
   });
 </script>
