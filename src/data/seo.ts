@@ -6,7 +6,7 @@ export const siteConfig = {
   locale: 'ru_RU',
   phone: '+79100051667',
   instagram: 'https://instagram.com/julia_mi',
-  whatsapp: 'https://wa.me/79100051667',
+  whatsapp: 'https://api.whatsapp.com/send?phone=79100051667',
   telegram: 'https://t.me/+79100051667',
 };
 
