@@ -46,45 +46,75 @@ import Button from '../ui/Button.astro';
             <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[11%] h-[1px] bg-gradient-to-r from-transparent via-lavender-300/10 to-transparent rotate-45"></div>
             <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[11%] h-[1px] bg-gradient-to-r from-transparent via-lavender-300/10 to-transparent -rotate-45"></div>
 
-            <!-- Орбита 1 — Меркурий -->
-            <div class="orbit orbit-1 absolute top-1/2 left-1/2 w-[28%] h-[28%] rounded-full" style="border: 2.5px solid rgba(216,180,254,0.25);">
-              <div class="planet absolute -top-[8px] left-1/2 -translate-x-1/2">
-                <div class="w-[16px] h-[16px] rounded-full" style="background: radial-gradient(circle at 30% 30%, rgba(216,180,254,0.8), rgba(192,132,252,0.4)); box-shadow: 0 0 10px rgba(192,132,252,0.3);"></div>
+            <!-- Орбита 1 — Меркурий ☿ -->
+            <div class="orbit orbit-1 absolute top-1/2 left-1/2 w-[16%] h-[16%] rounded-full" style="border: 2.5px solid rgba(216,180,254,0.25);">
+              <div class="planet absolute -top-[7px] left-1/2 -translate-x-1/2">
+                <div class="w-[14px] h-[14px] rounded-full" style="background: radial-gradient(circle at 30% 30%, rgba(200,200,210,0.8), rgba(160,160,180,0.4)); box-shadow: 0 0 8px rgba(200,200,210,0.3);"></div>
               </div>
             </div>
 
-            <!-- Орбита 2 — Венера -->
-            <div class="orbit orbit-2 absolute top-1/2 left-1/2 w-[44%] h-[44%] rounded-full" style="border: 2.5px solid rgba(216,180,254,0.2);">
-              <div class="planet absolute -top-[10px] left-1/2 -translate-x-1/2">
-                <div class="w-[20px] h-[20px] rounded-full" style="background: radial-gradient(circle at 30% 30%, rgba(201,160,181,0.75), rgba(176,125,151,0.35)); box-shadow: 0 0 12px rgba(176,125,151,0.25);"></div>
+            <!-- Орбита 2 — Венера ♀ -->
+            <div class="orbit orbit-2 absolute top-1/2 left-1/2 w-[26%] h-[26%] rounded-full" style="border: 2.5px solid rgba(216,180,254,0.22);">
+              <div class="planet absolute -top-[9px] left-1/2 -translate-x-1/2">
+                <div class="w-[18px] h-[18px] rounded-full" style="background: radial-gradient(circle at 30% 30%, rgba(230,190,160,0.75), rgba(200,160,120,0.35)); box-shadow: 0 0 10px rgba(230,190,160,0.25);"></div>
               </div>
             </div>
 
-            <!-- Орбита 3 — Земля + Луна -->
-            <div class="orbit orbit-3 absolute top-1/2 left-1/2 w-[62%] h-[62%] rounded-full" style="border: 2.5px solid rgba(216,180,254,0.16);">
-              <div class="planet absolute -top-[13px] left-1/2 -translate-x-1/2">
-                <div class="relative">
-                  <!-- Земля -->
-                  <div class="w-[26px] h-[26px] rounded-full" style="background: radial-gradient(circle at 30% 30%, rgba(192,132,252,0.7), rgba(168,85,247,0.3)); box-shadow: 0 0 14px rgba(192,132,252,0.25);"></div>
-                  <!-- Луна — вращается вокруг Земли -->
-                  <div class="moon-orbit absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[48px] h-[48px]">
-                    <div class="absolute -top-[5px] left-1/2 -translate-x-1/2 w-[11px] h-[11px] rounded-full" style="background: radial-gradient(circle at 35% 35%, rgba(216,180,254,0.65), rgba(192,132,252,0.3));"></div>
+            <!-- Орбита 3 — Земля ♁ + Луна ☽ -->
+            <div class="orbit orbit-3 absolute top-1/2 left-1/2 w-[36%] h-[36%] rounded-full" style="border: 2.5px solid rgba(216,180,254,0.18);">
+              <div class="planet absolute -top-[11px] left-1/2 -translate-x-1/2">
+                <div class="relative w-[22px] h-[22px]">
+                  <div class="w-full h-full rounded-full" style="background: radial-gradient(circle at 30% 30%, rgba(100,180,230,0.7), rgba(60,130,200,0.3)); box-shadow: 0 0 12px rgba(100,180,230,0.25);"></div>
+                  <div class="moon-orbit absolute top-[11px] left-[11px] -translate-x-1/2 -translate-y-1/2 w-[42px] h-[42px]">
+                    <div class="absolute -top-[4px] left-1/2 -translate-x-1/2 w-[9px] h-[9px] rounded-full" style="background: radial-gradient(circle at 35% 35%, rgba(220,220,230,0.7), rgba(180,180,200,0.3));"></div>
                   </div>
                 </div>
               </div>
             </div>
 
-            <!-- Орбита 4 — Марс -->
-            <div class="orbit orbit-4 absolute top-1/2 left-1/2 w-[82%] h-[82%] rounded-full" style="border: 2px solid rgba(216,180,254,0.12);">
-              <div class="planet absolute -top-[9px] left-1/2 -translate-x-1/2">
-                <div class="w-[18px] h-[18px] rounded-full" style="background: radial-gradient(circle at 30% 30%, rgba(176,125,151,0.65), rgba(157,97,125,0.25)); box-shadow: 0 0 10px rgba(176,125,151,0.2);"></div>
+            <!-- Орбита 4 — Марс ♂ -->
+            <div class="orbit orbit-4 absolute top-1/2 left-1/2 w-[46%] h-[46%] rounded-full" style="border: 2.5px solid rgba(216,180,254,0.15);">
+              <div class="planet absolute -top-[8px] left-1/2 -translate-x-1/2">
+                <div class="w-[16px] h-[16px] rounded-full" style="background: radial-gradient(circle at 30% 30%, rgba(220,120,100,0.7), rgba(180,80,60,0.3)); box-shadow: 0 0 10px rgba(220,120,100,0.2);"></div>
               </div>
             </div>
 
-            <!-- Орбита 5 — Юпитер (далёкая) -->
-            <div class="orbit orbit-5 absolute top-1/2 left-1/2 w-[98%] h-[98%] rounded-full" style="border: 2px solid rgba(216,180,254,0.08);">
-              <div class="planet absolute -top-[7px] left-1/2 -translate-x-1/2">
-                <div class="w-[14px] h-[14px] rounded-full" style="background: radial-gradient(circle at 30% 30%, rgba(216,180,254,0.45), rgba(192,132,252,0.15)); box-shadow: 0 0 8px rgba(192,132,252,0.1);"></div>
+            <!-- Орбита 5 — Юпитер ♃ -->
+            <div class="orbit orbit-5 absolute top-1/2 left-1/2 w-[58%] h-[58%] rounded-full" style="border: 2.5px solid rgba(216,180,254,0.12);">
+              <div class="planet absolute -top-[13px] left-1/2 -translate-x-1/2">
+                <div class="w-[26px] h-[26px] rounded-full" style="background: radial-gradient(circle at 30% 30%, rgba(210,180,140,0.7), rgba(180,150,110,0.3)); box-shadow: 0 0 14px rgba(210,180,140,0.2);"></div>
+              </div>
+            </div>
+
+            <!-- Орбита 6 — Сатурн ♄ -->
+            <div class="orbit orbit-6 absolute top-1/2 left-1/2 w-[70%] h-[70%] rounded-full" style="border: 2px solid rgba(216,180,254,0.10);">
+              <div class="planet absolute -top-[12px] left-1/2 -translate-x-1/2">
+                <div class="relative">
+                  <div class="w-[22px] h-[22px] rounded-full" style="background: radial-gradient(circle at 30% 30%, rgba(220,200,150,0.65), rgba(190,170,120,0.25)); box-shadow: 0 0 12px rgba(220,200,150,0.2);"></div>
+                  <!-- Кольцо Сатурна -->
+                  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[36px] h-[10px] rounded-full" style="border: 1.5px solid rgba(220,200,150,0.3); transform: translate(-50%, -50%) rotate(-20deg);"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Орбита 7 — Уран ♅ -->
+            <div class="orbit orbit-7 absolute top-1/2 left-1/2 w-[80%] h-[80%] rounded-full" style="border: 2px solid rgba(216,180,254,0.08);">
+              <div class="planet absolute -top-[9px] left-1/2 -translate-x-1/2">
+                <div class="w-[18px] h-[18px] rounded-full" style="background: radial-gradient(circle at 30% 30%, rgba(150,220,230,0.6), rgba(100,190,210,0.25)); box-shadow: 0 0 10px rgba(150,220,230,0.15);"></div>
+              </div>
+            </div>
+
+            <!-- Орбита 8 — Нептун ♆ -->
+            <div class="orbit orbit-8 absolute top-1/2 left-1/2 w-[90%] h-[90%] rounded-full" style="border: 2px solid rgba(216,180,254,0.06);">
+              <div class="planet absolute -top-[9px] left-1/2 -translate-x-1/2">
+                <div class="w-[17px] h-[17px] rounded-full" style="background: radial-gradient(circle at 30% 30%, rgba(80,120,220,0.6), rgba(60,90,190,0.25)); box-shadow: 0 0 10px rgba(80,120,220,0.15);"></div>
+              </div>
+            </div>
+
+            <!-- Орбита 9 — Плутон ♇ -->
+            <div class="orbit orbit-9 absolute top-1/2 left-1/2 w-[98%] h-[98%] rounded-full" style="border: 1.5px solid rgba(216,180,254,0.04);">
+              <div class="planet absolute -top-[6px] left-1/2 -translate-x-1/2">
+                <div class="w-[12px] h-[12px] rounded-full" style="background: radial-gradient(circle at 30% 30%, rgba(180,160,170,0.5), rgba(140,120,130,0.2)); box-shadow: 0 0 6px rgba(180,160,170,0.1);"></div>
               </div>
             </div>
           </div>

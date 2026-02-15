@@ -126,24 +126,40 @@ h1, h2, h3, h4, h5, h6 {
  * в стартовую позицию, чтобы они не стояли в ряд.
  */
 .orbit-1 {
-  animation: orbit-spin 14s linear infinite;
-  animation-delay: -3s;   /* ~77° */
+  animation: orbit-spin 12s linear infinite;
+  animation-delay: -3s;
 }
 .orbit-2 {
-  animation: orbit-spin 22s linear infinite;
-  animation-delay: -10s;  /* ~164° */
+  animation: orbit-spin 18s linear infinite;
+  animation-delay: -10s;
 }
 .orbit-3 {
-  animation: orbit-spin 36s linear infinite;
-  animation-delay: -28s;  /* ~280° */
+  animation: orbit-spin 28s linear infinite;
+  animation-delay: -20s;
 }
 .orbit-4 {
-  animation: orbit-spin 55s linear infinite;
-  animation-delay: -5s;   /* ~33° */
+  animation: orbit-spin 38s linear infinite;
+  animation-delay: -5s;
 }
 .orbit-5 {
-  animation: orbit-spin 90s linear infinite;
-  animation-delay: -50s;  /* ~200° */
+  animation: orbit-spin 55s linear infinite;
+  animation-delay: -30s;
+}
+.orbit-6 {
+  animation: orbit-spin 75s linear infinite;
+  animation-delay: -45s;
+}
+.orbit-7 {
+  animation: orbit-spin 100s linear infinite;
+  animation-delay: -60s;
+}
+.orbit-8 {
+  animation: orbit-spin 130s linear infinite;
+  animation-delay: -80s;
+}
+.orbit-9 {
+  animation: orbit-spin 170s linear infinite;
+  animation-delay: -100s;
 }
 
 /* Луна вокруг Земли — быстрое вращение */
@@ -163,6 +179,7 @@ h1, h2, h3, h4, h5, h6 {
 /* reduce-motion: отключаем анимации для людей с вестибулярными нарушениями */
 @media (prefers-reduced-motion: reduce) {
   .orbit-1, .orbit-2, .orbit-3, .orbit-4, .orbit-5,
+  .orbit-6, .orbit-7, .orbit-8, .orbit-9,
   .moon-orbit, .sun-glow {
     animation: none !important;
   }
