@@ -35,14 +35,15 @@ import Footer from '../components/Footer.astro';
     function initHero() {
       // Set initial states
       gsap.set(['.hero-subtitle', '.hero-title', '.hero-desc', '.hero-cta'], { y: 30 });
+      gsap.set('.hero-photo-wrapper', { scale: 0.9, opacity: 0 });
 
       // Floating stars
       gsap.utils.toArray<HTMLElement>('.hero-star').forEach((star) => {
         gsap.to(star, {
-          y: `random(-25, 25)`,
-          x: `random(-25, 25)`,
-          rotation: `random(-15, 15)`,
-          duration: `random(3, 6)`,
+          y: `random(-20, 20)`,
+          x: `random(-20, 20)`,
+          rotation: `random(-10, 10)`,
+          duration: `random(4, 7)`,
           repeat: -1,
           yoyo: true,
           ease: 'sine.inOut',
@@ -50,10 +51,11 @@ import Footer from '../components/Footer.astro';
         });
       });
 
-      // Text reveal
-      const heroTl = gsap.timeline({ delay: 0.3 });
+      // Text reveal + photo
+      const heroTl = gsap.timeline({ delay: 0.2 });
       heroTl
-        .to('.hero-subtitle', { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' })
+        .to('.hero-photo-wrapper', { scale: 1, opacity: 1, duration: 1.2, ease: 'power3.out' })
+        .to('.hero-subtitle', { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }, '-=0.8')
         .to('.hero-title', { opacity: 1, y: 0, duration: 1, ease: 'power3.out' }, '-=0.5')
         .to('.hero-desc', { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' }, '-=0.5')
         .to('.hero-cta', { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' }, '-=0.4');
@@ -220,7 +222,7 @@ import Footer from '../components/Footer.astro';
         for (let i = 0; i < count; i++) {
           const dot = document.createElement('button');
           dot.className = `w-2.5 h-2.5 rounded-full transition-all duration-300 cursor-pointer ${
-            i === currentIndex ? 'bg-gold-500 w-8' : 'bg-cream-300'
+            i === currentIndex ? 'bg-dark-900 w-8' : 'bg-warm-400'
           }`;
           dot.setAttribute('aria-label', `Слайд ${i + 1}`);
           dot.addEventListener('click', () => goTo(i));

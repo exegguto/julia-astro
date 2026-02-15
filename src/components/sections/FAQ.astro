@@ -6,15 +6,15 @@ import { faqItems } from '../../data/faq';
 <section class="section-padding bg-white" id="faq">
   <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
     <!-- Section header -->
-    <div class="text-center mb-12 section-reveal">
-      <p class="font-script text-gold-600 text-xl mb-2">Ответы на вопросы</p>
-      <h2 class="font-heading text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+    <div class="text-center mb-10 sm:mb-12 section-reveal">
+      <p class="font-script text-peach-400 text-xl mb-2">Ответы на вопросы</p>
+      <h2 class="font-heading text-3xl sm:text-4xl font-bold text-dark-900 mb-4">
         Часто задаваемые вопросы
       </h2>
     </div>
 
     <!-- FAQ items -->
-    <div class="bg-cream-50 rounded-2xl p-6 sm:p-8 border border-cream-200">
+    <div class="bg-warm-100 rounded-2xl p-4 sm:p-6 md:p-8 border border-warm-300">
       {faqItems.map((item, index) => (
         <FAQItem item={item} index={index} />
       ))}

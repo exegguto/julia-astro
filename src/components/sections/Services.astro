@@ -3,21 +3,21 @@ import ServiceCard from '../ui/ServiceCard.astro';
 import { services } from '../../data/services';
 ---
 
-<section class="section-padding bg-cream-50" id="services">
+<section class="section-padding bg-warm-200" id="services">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <!-- Section header -->
-    <div class="text-center mb-16 section-reveal">
-      <p class="font-script text-gold-600 text-xl mb-2">Что я предлагаю</p>
-      <h2 class="font-heading text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+    <div class="text-center mb-12 sm:mb-16 section-reveal">
+      <p class="font-script text-peach-400 text-xl mb-2">Что я предлагаю</p>
+      <h2 class="font-heading text-3xl sm:text-4xl font-bold text-dark-900 mb-4">
         Мои услуги
       </h2>
-      <p class="text-gray-600 max-w-2xl mx-auto text-lg">
+      <p class="text-dark-500 max-w-2xl mx-auto text-lg">
         Каждая консультация — это персональный подход к вашей уникальной ситуации. Выберите направление, которое вас интересует.
       </p>
     </div>
 
     <!-- Services grid -->
-    <div class="services-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+    <div class="services-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-8">
       {services.map((service) => (
         <ServiceCard service={service} />
       ))}

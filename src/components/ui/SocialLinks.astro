@@ -40,7 +40,7 @@ const links = [
         href={link.href}
         target="_blank"
         rel="noopener noreferrer"
-        class={`inline-flex items-center gap-3 px-8 py-4 rounded-full border-2 border-cream-300 bg-white text-gray-700 font-medium transition-all duration-300 hover:text-white hover:shadow-lg ${link.color}`}
+        class={`inline-flex items-center gap-3 px-8 py-4 rounded-full border-2 border-warm-400 bg-white text-dark-700 font-medium transition-all duration-300 hover:text-white hover:shadow-lg ${link.color}`}
         aria-label={link.name}
       >
         <span class={iconSizes[size]} set:html={link.icon} />
@@ -55,7 +55,7 @@ const links = [
         href={link.href}
         target="_blank"
         rel="noopener noreferrer"
-        class={`${containerSizes[size]} rounded-full border-2 border-cream-300 bg-white flex items-center justify-center text-gray-500 transition-all duration-300 hover:text-white hover:shadow-lg ${link.color}`}
+        class={`${containerSizes[size]} rounded-full border-2 border-warm-400 bg-white flex items-center justify-center text-dark-400 transition-all duration-300 hover:text-white hover:shadow-lg ${link.color}`}
         aria-label={link.name}
       >
         <span class={iconSizes[size]} set:html={link.icon} />
